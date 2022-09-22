@@ -10,10 +10,10 @@ const get =  async(req,res,next)=>{
     res.json({msg : "This is single post "})
 }
 
-const post = async(req,res,next)=>{
-    let savePost = new DB(req.body);
-    let result =  await savePost.save();
-    fMsg(res,"Post Added" , result);
+const post = async (req,res,next)=>{
+    // let result =  await new DB(req.body).save();
+    // fMsg(res,"Post Added" , result);
+    res.json({msg : "Post Incoming"})
 } 
 
 const patch = async(req,res,next)=>{
