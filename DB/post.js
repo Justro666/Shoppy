@@ -8,6 +8,6 @@ const postSchema = new Schema({
      time : {type : Date , default : Date.now}
 })
 
-const post = mongoose.model("post" , postSchema);
+const Post = mongoose.model("post" , postSchema);
 
-module.exports = post ;
+module.exports = Post ;

@@ -2,7 +2,7 @@ const DB = require ('../DB/post');
 const {fMsg} = require('../Utils/help')
 
 const all = async(req,res,next)=>{
-    let posts = await DB.find();
+    let posts = await DB.find().populate('user' ,'-password -__v');
     fMsg(res,"All Post" , posts);
 }
 
@@ -11,9 +11,9 @@ const get =  async(req,res,next)=>{
 }
 
 const post = async (req,res,next)=>{
-    // let result =  await new DB(req.body).save();
-    // fMsg(res,"Post Added" , result);
-    res.json({msg : "Post Incoming"})
+    let result =  await new DB(req.body).save();
+    fMsg(res,"Post Added" , result);
+    // res.json(console.log(req.body))
 } 
 
 const patch = async(req,res,next)=>{
