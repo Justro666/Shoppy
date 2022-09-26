@@ -4,7 +4,7 @@ const saveFile = async (req,res,next) => {
     let file = req.files.file;
     let fileName = new Date().valueOf() + "_" + file.name;
     file.mv(`./Gallery/${fileName}`)
-    req.imageName = fileName ; 
+    req.body["image"] = fileName;
     next();
 }
 
@@ -16,7 +16,7 @@ const saveFiles = async (req,res,next) => {
         fileNames.push(fileName);
         file.mv(`./Gallery/${fileName}`);
     });
-    req.imageName = fileNames.join(",");
+    req.body["images"] = fileNames.join(",");
     next();
 }
 

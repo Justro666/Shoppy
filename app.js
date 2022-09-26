@@ -12,14 +12,16 @@ mongoose.connect(`mongodb://localhost:27017/${process.env.DB_NAME}`);
 
 const userRoute = require('./routes/user');
 const postRoute = require('./routes/posts');
-const {saveFile,saveFiles,deleteFile} = require('./Utils/gallery');
+const catRoute = require('./routes/cat.js');
+// const {saveFile,saveFiles,deleteFile} = require('./Utils/gallery');
 
-app.post('/gallery', deleteFile ,(req,res,next) =>{
-    res.status(200).json({ msg : "File Deleted"});
-})
+// app.post('/gallery', deleteFile ,(req,res,next) =>{
+//     res.status(200).json({ msg : "File Deleted"});
+// })
 
 app.use("/users" , userRoute );
-app.use("/posts" , postRoute)
+app.use("/posts" , postRoute);
+app.use("/cats" , catRoute);
 
 app.use((err,req,res,next)=>{
     err.status = err.status || 200
